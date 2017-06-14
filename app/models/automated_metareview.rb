@@ -20,14 +20,15 @@ require 'review_coverage'
 class Automated_Metareview
   attr_accessor :review_array
 
-  #quantity metric generator
+  # quantity metric generator
   def calculate_metareview_metric_quantity(review)
     preprocess = TextPreprocessing.new
 
-    #formatting the review responses, segmenting them at punctuations
+    # formatting the review responses, segmenting them at punctuations
     review_text = preprocess.segment_text(0, review)
-    #removing quoted text from reviews
-    review_text = preprocess.remove_text_within_quotes(review_text) #review_text is an array
+    # removing quoted text from reviews
+    # review_text is an array
+    review_text = preprocess.remove_text_within_quotes(review_text)
     quant = TextQuantity.new
     quantity = quant.number_of_unique_tokens(review_text)
 
